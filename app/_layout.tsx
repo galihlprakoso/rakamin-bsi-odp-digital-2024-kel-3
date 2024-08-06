@@ -6,9 +6,19 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { MD3LightTheme as DefaultThemePaper, PaperProvider } from 'react-native-paper';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
+
+const theme = {
+  ...DefaultThemePaper,
+  colors: {
+    ...DefaultThemePaper.colors,
+    primary: 'tomato',
+    secondary: 'yellow',
+  },
+};
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -28,10 +38,15 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
+      <PaperProvider theme={theme}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        >        
+          <Stack.Screen name="+not-found" />
+        </Stack>
+      </PaperProvider>
     </ThemeProvider>
   );
 }

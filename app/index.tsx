@@ -1,8 +1,15 @@
-import { Stack } from 'expo-router';
+import { Redirect, Stack } from 'expo-router';
 import { View } from 'react-native';
 import { Button, Card, Chip, Text } from 'react-native-paper';
 
 export default function HomeScreen() {
+
+    const authenticated = true;
+
+    if (!authenticated) {
+        return <Redirect href="/auth" />
+    }
+
     return (
         <>
         <Stack.Screen options={{ title: 'Home' }} />

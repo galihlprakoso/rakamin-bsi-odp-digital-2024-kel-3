@@ -1,3 +1,4 @@
+import { Colors } from "@/constants/Colors";
 import { useState } from "react";
 import { View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
@@ -36,15 +37,20 @@ export default function AuthScreen() {
                     label="Email"
                     value={email}
                     onChangeText={text => setEmail(text)}
+                    mode="outlined"
                 />
                 <TextInput
                     label="Password"
                     value={password}
                     onChangeText={text => setPassword(text)}
+                    mode="outlined"
                 />
 
                 <Button
                     mode="contained"
+                    style={{
+                        backgroundColor: Colors.primary,
+                    }}
                 >
                     Sign In
                 </Button>
@@ -75,6 +81,7 @@ export default function AuthScreen() {
 
                 <Button
                     mode="outlined"
+                    textColor={Colors.primary}
                 >
                     Play as Guest
                 </Button>

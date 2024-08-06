@@ -44,6 +44,7 @@ export default function RootLayout() {
             headerShown: false,
           }}
         >        
+          <Stack.Screen name="auth" />
           <Stack.Screen name="+not-found" />
         </Stack>
       </PaperProvider>
